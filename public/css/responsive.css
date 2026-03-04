@@ -1,0 +1,102 @@
+/* =========================================================
+   responsive.css — mobile-first breakpoints
+   everything above is the mobile base; we scale UP
+   ========================================================= */
+
+/* ---- tablet: 768px and up ---- */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--space-xl);
+    }
+}
+
+/* ---- desktop: 1024px and up ---- */
+@media (min-width: 1024px) {
+    /* navbar toggles hidden on desktop */
+    .navbar__toggle {
+        display: none;
+    }
+
+    .navbar__links {
+        display: flex !important; /* always visible on desktop */
+        flex-direction: row;
+    }
+}
+
+/* =========================================================
+   MOBILE OVERRIDES — max-width 1023px
+   ========================================================= */
+@media (max-width: 1023px) {
+    .navbar__toggle {
+        display: flex;
+    }
+
+    /* links hidden by default on mobile, toggled by JS */
+    .navbar__links {
+        display: none;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+        z-index: 99;
+    }
+
+    .navbar__links.navbar__links--open {
+        display: flex;
+    }
+
+    .navbar__links li {
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .navbar__links a {
+        display: block;
+        padding: var(--space-md) var(--space-lg);
+        width: 100%;
+    }
+
+    /* stack footer columns on mobile */
+    .footer__top {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+}
+
+/* =========================================================
+   MOBILE BASE — max-width 767px
+   ========================================================= */
+@media (max-width: 767px) {
+    :root {
+        --space-3xl: 2.5rem;
+        --space-2xl: 2rem;
+    }
+
+    .section {
+        padding: var(--space-2xl) 0;
+    }
+
+    .btn--lg {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE — max-width 480px
+   ========================================================= */
+@media (max-width: 480px) {
+    :root {
+        --space-lg: 1rem;
+    }
+
+    .navbar__brand span {
+        font-size: 1.05rem;
+    }
+}

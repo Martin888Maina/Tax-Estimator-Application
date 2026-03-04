@@ -1,0 +1,25 @@
+/* calculator.css — styles for the main calculator page (Phase 2) */
+
+/* placeholder coming-soon style used by stub views */
+.coming-soon {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-lg);
+}
+
+.coming-soon__icon {
+    font-size: 3rem;
+    color: var(--green-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.coming-soon h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.coming-soon p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+}
