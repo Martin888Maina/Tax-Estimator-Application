@@ -18,15 +18,6 @@
                 </ul>
             </div>
 
-            <div class="footer__links-group">
-                <h4 class="footer__group-title">Tax References</h4>
-                <ul class="footer__links">
-                    <li><span>Finance Act 2023</span></li>
-                    <li><span>Tax Laws Amendment Act 2024</span></li>
-                    <li><span>Social Health Insurance Act 2023</span></li>
-                    <li><span>Affordable Housing Act 2024</span></li>
-                </ul>
-            </div>
         </div>
 
         <div class="footer__bottom">
