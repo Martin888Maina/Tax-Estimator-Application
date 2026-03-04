@@ -5,6 +5,7 @@
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/calculator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/settings.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/charts.css') }}">
 @endsection
 
 @section('content')
@@ -189,6 +190,58 @@
                 <div class="bracket-detail__summary" id="bracketSummary"></div>
             </div>
 
+            {{-- ---- INCOME BREAKDOWN CHARTS ---- --}}
+            <div class="charts-section card" id="chartsSection">
+                <h2 class="charts-section__title">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Income Breakdown Charts
+                </h2>
+
+                <div class="charts-grid">
+                    {{-- donut / pie chart --}}
+                    <div class="chart-card">
+                        <div class="chart-card__title">
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            Income Allocation
+                        </div>
+                        <div class="chart-canvas-wrap chart-canvas-wrap--donut">
+                            <canvas id="donutChart" aria-label="Donut chart showing income allocation"></canvas>
+                        </div>
+                    </div>
+
+                    {{-- stacked horizontal bar chart --}}
+                    <div class="chart-card">
+                        <div class="chart-card__title">
+                            <i class="fa-solid fa-bars-progress"></i>
+                            Deductions as Proportion of Gross
+                        </div>
+                        <div class="chart-canvas-wrap chart-canvas-wrap--bar">
+                            <canvas id="barChart" aria-label="Stacked bar chart showing deductions as proportion of gross salary"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__dot chart-legend__dot--net"></span> Net Take-Home
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__dot chart-legend__dot--paye"></span> PAYE
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__dot chart-legend__dot--shif"></span> SHIF
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__dot chart-legend__dot--nssf"></span> NSSF
+                            </div>
+                            <div class="chart-legend__item">
+                                <span class="chart-legend__dot chart-legend__dot--levy"></span> Housing Levy
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- ---- BRACKET VISUALIZER ---- --}}
+            @include('components.bracket-visualizer')
+
         </div>
         {{-- end #resultsArea --}}
 
@@ -289,5 +342,6 @@
     <script src="{{ asset('js/currency-formatter.js') }}"></script>
     <script src="{{ asset('js/tax-calculator.js') }}"></script>
     <script src="{{ asset('js/settings-override.js') }}"></script>
+    <script src="{{ asset('js/charts.js') }}"></script>
     <script src="{{ asset('js/ui-helpers.js') }}"></script>
 @endsection

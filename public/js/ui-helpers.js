@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError();
             showHint('Enter your gross salary above to see your full tax breakdown.');
             hideResults();
+            if (typeof resetCharts === 'function') resetCharts();
             return;
         }
 

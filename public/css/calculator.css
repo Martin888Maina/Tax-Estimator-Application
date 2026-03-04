@@ -570,7 +570,9 @@
 
 .results-area--empty .summary-cards,
 .results-area--empty .breakdown-section,
-.results-area--empty .bracket-detail {
+.results-area--empty .bracket-detail,
+.results-area--empty .charts-section,
+.results-area--empty .bviz-card {
     display: none;
 }
 
