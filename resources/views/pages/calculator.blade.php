@@ -4,6 +4,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/calculator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/settings.css') }}">
 @endsection
 
 @section('content')
@@ -60,6 +61,9 @@
             </p>
         </section>
 
+        {{-- ===== SETTINGS OVERRIDE PANEL ===== --}}
+        @include('components.settings-panel')
+
         {{-- ===== RESULTS AREA (populated by JS) ===== --}}
         <div class="results-area" id="resultsArea" aria-live="polite">
 
@@ -89,7 +93,7 @@
                     <div class="results-card__body">
                         <span class="results-card__label">SHIF</span>
                         <span class="results-card__amount" id="cardSHIF">KES 0.00</span>
-                        <span class="results-card__sub">2.75% of gross</span>
+                        <span class="results-card__sub" id="cardSHIFSub">2.75% of gross</span>
                     </div>
                 </div>
 
@@ -141,12 +145,8 @@
                                 <th class="breakdown-table__th breakdown-table__th--amount">Amount (KES)</th>
                             </tr>
                         </thead>
-                        <tbody id="breakdownBody">
-                            {{-- rows injected by JS --}}
-                        </tbody>
-                        <tfoot id="breakdownFoot">
-                            {{-- totals injected by JS --}}
-                        </tfoot>
+                        <tbody id="breakdownBody"></tbody>
+                        <tfoot id="breakdownFoot"></tfoot>
                     </table>
                 </div>
             </div>
@@ -183,18 +183,101 @@
                                 <th>Tax in Bracket</th>
                             </tr>
                         </thead>
-                        <tbody id="bracketTableBody">
-                            {{-- injected by JS --}}
-                        </tbody>
+                        <tbody id="bracketTableBody"></tbody>
                     </table>
                 </div>
-                <div class="bracket-detail__summary" id="bracketSummary">
-                    {{-- injected by JS --}}
-                </div>
+                <div class="bracket-detail__summary" id="bracketSummary"></div>
             </div>
 
         </div>
         {{-- end #resultsArea --}}
+
+        {{-- ===== DEDUCTION EXPLANATIONS ACCORDION ===== --}}
+        <div class="explanations-panel" id="explanationsPanel">
+            <button class="explanations-panel__toggle" id="explanationsToggle"
+                    aria-expanded="false" aria-controls="explanationsBody">
+                <span class="explanations-panel__toggle-title">
+                    <i class="fa-solid fa-circle-question"></i>
+                    Understanding Your Deductions
+                </span>
+                <i class="fa-solid fa-chevron-down explanations-panel__chevron"></i>
+            </button>
+
+            <div class="explanations-panel__body" id="explanationsBody" hidden>
+
+                <div class="explanation-item">
+                    <div class="explanation-item__header">
+                        <span class="explanation-item__dot explanation-item__dot--paye"></span>
+                        <span class="explanation-item__name">PAYE — Pay As You Earn</span>
+                    </div>
+                    <p class="explanation-item__text">
+                        PAYE is Kenya's income tax on employment income, administered by KRA.
+                        It uses five graduated brackets — you pay a lower rate on the first portion
+                        of your income and a higher rate only on the excess above each threshold.
+                        Your personal relief of KES 2,400/month is subtracted from the raw tax,
+                        meaning low earners often owe zero PAYE.
+                    </p>
+                    <span class="explanation-item__formula">Gross PAYE − Personal Relief = PAYE Payable</span>
+                </div>
+
+                <div class="explanation-item">
+                    <div class="explanation-item__header">
+                        <span class="explanation-item__dot explanation-item__dot--shif"></span>
+                        <span class="explanation-item__name">SHIF — Social Health Insurance Fund</span>
+                    </div>
+                    <p class="explanation-item__text">
+                        SHIF replaced the National Hospital Insurance Fund (NHIF) effective
+                        1 October 2024 under the Social Health Insurance Act 2023. The rate is
+                        a flat 2.75% of your gross salary with a minimum of KES 300/month.
+                        It is fully tax-deductible, reducing your taxable income before PAYE is computed.
+                    </p>
+                    <span class="explanation-item__formula">max(Gross × 2.75%, KES 300)</span>
+                </div>
+
+                <div class="explanation-item">
+                    <div class="explanation-item__header">
+                        <span class="explanation-item__dot explanation-item__dot--nssf"></span>
+                        <span class="explanation-item__name">NSSF — National Social Security Fund</span>
+                    </div>
+                    <p class="explanation-item__text">
+                        Under the NSSF Act 2013 (fully enforced from February 2026), contributions
+                        are 6% of pensionable pay split across two tiers. Tier I covers the first
+                        KES 9,000 and Tier II covers KES 9,001 to KES 108,000, giving a maximum
+                        employee contribution of KES 6,480/month. The employee contribution is
+                        fully tax-deductible.
+                    </p>
+                    <span class="explanation-item__formula">6% × Tier I (≤9K) + 6% × Tier II (9K–108K)</span>
+                </div>
+
+                <div class="explanation-item">
+                    <div class="explanation-item__header">
+                        <span class="explanation-item__dot explanation-item__dot--levy"></span>
+                        <span class="explanation-item__name">Affordable Housing Levy</span>
+                    </div>
+                    <p class="explanation-item__text">
+                        Reintroduced on 19 March 2024 under the Affordable Housing Act 2024, this
+                        levy funds the government's affordable housing programme. It is charged at
+                        1.5% of your gross salary and is fully tax-deductible since 27 December 2024.
+                    </p>
+                    <span class="explanation-item__formula">Gross × 1.5%</span>
+                </div>
+
+                <div class="explanation-item">
+                    <div class="explanation-item__header">
+                        <span class="explanation-item__dot explanation-item__dot--relief"></span>
+                        <span class="explanation-item__name">Personal Relief</span>
+                    </div>
+                    <p class="explanation-item__text">
+                        Personal relief is a fixed monthly credit of KES 2,400 (KES 28,800 annually)
+                        that every Kenyan employee is entitled to. It is subtracted directly from
+                        your gross PAYE after bracket computation. If your gross PAYE is below
+                        KES 2,400, you owe zero PAYE.
+                    </p>
+                    <span class="explanation-item__formula">Fixed: KES 2,400 / month (since April 2020)</span>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 </div>
@@ -205,5 +288,6 @@
     <script src="{{ asset('js/tax-constants.js') }}"></script>
     <script src="{{ asset('js/currency-formatter.js') }}"></script>
     <script src="{{ asset('js/tax-calculator.js') }}"></script>
+    <script src="{{ asset('js/settings-override.js') }}"></script>
     <script src="{{ asset('js/ui-helpers.js') }}"></script>
 @endsection
