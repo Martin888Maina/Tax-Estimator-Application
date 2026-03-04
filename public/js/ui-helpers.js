@@ -288,10 +288,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function showResults() {
         if (resultsArea) resultsArea.classList.remove('results-area--empty');
         hideHint();
+        // show the PDF export bar once there are results to download
+        const pdfBar = document.getElementById('pdfExportBar');
+        if (pdfBar) pdfBar.classList.add('pdf-export-bar--visible');
     }
 
     function hideResults() {
         if (resultsArea) resultsArea.classList.add('results-area--empty');
+        const pdfBar = document.getElementById('pdfExportBar');
+        if (pdfBar) pdfBar.classList.remove('pdf-export-bar--visible');
     }
 
     function showHint(msg) {

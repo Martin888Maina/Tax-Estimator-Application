@@ -65,7 +65,18 @@
         {{-- ===== SETTINGS OVERRIDE PANEL ===== --}}
         @include('components.settings-panel')
 
+        {{-- ===== PDF EXPORT BUTTON ===== --}}
+        <div class="pdf-export-bar" id="pdfExportBar">
+            <p class="pdf-export-bar__hint">Your breakdown is ready.</p>
+            <button class="btn btn--outline btn--sm" id="exportPdfBtn">
+                <i class="fa-solid fa-file-pdf"></i>
+                Download PDF
+            </button>
+        </div>
+
         {{-- ===== RESULTS AREA (populated by JS) ===== --}}
+        {{-- pdfExportTarget wraps everything html2canvas will capture --}}
+        <div id="pdfExportTarget">
         <div class="results-area" id="resultsArea" aria-live="polite">
 
             {{-- ---- SUMMARY CARDS ---- --}}
@@ -244,6 +255,11 @@
 
         </div>
         {{-- end #resultsArea --}}
+        </div>
+        {{-- end #pdfExportTarget --}}
+
+        {{-- ===== TAX DISCLAIMER ===== --}}
+        @include('partials.tax-disclaimer')
 
         {{-- ===== DEDUCTION EXPLANATIONS ACCORDION ===== --}}
         <div class="explanations-panel" id="explanationsPanel">
@@ -344,4 +360,5 @@
     <script src="{{ asset('js/settings-override.js') }}"></script>
     <script src="{{ asset('js/charts.js') }}"></script>
     <script src="{{ asset('js/ui-helpers.js') }}"></script>
+    <script src="{{ asset('js/export-pdf.js') }}"></script>
 @endsection

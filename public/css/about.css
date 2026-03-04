@@ -1,0 +1,327 @@
+/* =========================================================
+   about.css — About page styles
+   ========================================================= */
+
+.about-page {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+}
+
+/* ---- hero ---- */
+.about-hero {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-2xl) var(--space-lg);
+}
+
+.about-hero__icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+    border: 2px solid #A7F3D0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--green-dark);
+    margin: 0 auto var(--space-lg);
+}
+
+.about-hero__title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.about-hero__subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ---- content sections ---- */
+.about-section {
+    margin-bottom: var(--space-xl);
+}
+
+.about-section__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.about-section__title i {
+    color: var(--green-dark);
+    font-size: 1rem;
+}
+
+.about-section__body {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: var(--space-md);
+}
+
+.about-section__body:last-child {
+    margin-bottom: 0;
+}
+
+.about-section__note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: var(--space-md);
+}
+
+.about-link {
+    color: var(--green-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: var(--transition);
+}
+
+.about-link:hover {
+    color: #047857;
+}
+
+/* =========================================================
+   METHODOLOGY STEPS
+   ========================================================= */
+
+.method-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+.method-step {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+}
+
+.method-step__num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.method-step__content h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.method-step__content p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* =========================================================
+   PAYE BRACKETS TABLE
+   ========================================================= */
+
+.about-table-wrap {
+    overflow-x: auto;
+    margin-bottom: var(--space-sm);
+}
+
+.about-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.about-table th {
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    background: #F9FAFB;
+}
+
+.about-table td {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.about-table tbody tr:hover {
+    background: #F0FDF4;
+}
+
+.about-table__rate {
+    font-weight: 700;
+    color: var(--color-paye);
+}
+
+/* =========================================================
+   DATA SOURCES GRID
+   ========================================================= */
+
+.sources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.source-item {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    padding: var(--space-md);
+    background: #F9FAFB;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.source-item__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: #ECFDF5;
+    color: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.source-item strong {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.source-item p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =========================================================
+   TECH STACK GRID
+   ========================================================= */
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.tech-item {
+    padding: var(--space-md);
+    background: #F9FAFB;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.tech-item strong {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+}
+
+.tech-item span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   TAX DISCLAIMER PARTIAL
+   ========================================================= */
+
+.tax-disclaimer {
+    margin-bottom: var(--space-xl);
+}
+
+.tax-disclaimer__inner {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    padding: var(--space-lg);
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: var(--radius-md);
+}
+
+.tax-disclaimer__icon {
+    color: #D97706;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.tax-disclaimer__text {
+    font-size: 0.87rem;
+    color: #92400E;
+    line-height: 1.65;
+}
+
+.tax-disclaimer__text strong {
+    color: #78350F;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.about-cta {
+    text-align: center;
+    padding: var(--space-xl) 0;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767px) {
+    .about-hero__title {
+        font-size: 1.7rem;
+    }
+
+    .method-step {
+        flex-direction: row;
+        gap: var(--space-md);
+    }
+
+    .sources-grid {
+        grid-template-columns: 1fr;
+    }
+}
