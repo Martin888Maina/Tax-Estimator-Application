@@ -101,6 +101,28 @@
     -moz-appearance: textfield;
 }
 
+.salary-input-group__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.75rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.salary-input-group__clear:hover {
+    color: var(--red);
+}
+
+.salary-input-group__clear[hidden] {
+    display: none;
+}
+
 .salary-input-group__error {
     min-height: 1.2em;
     margin-top: var(--space-xs);

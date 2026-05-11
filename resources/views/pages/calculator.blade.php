@@ -41,6 +41,15 @@
                             step="1"
                             autocomplete="off"
                         >
+                        <button
+                            type="button"
+                            class="salary-input-group__clear"
+                            id="clearSalaryBtn"
+                            aria-label="Clear salary input"
+                            hidden
+                        >
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
                     <p class="salary-input-group__error" id="salaryError" aria-live="polite"></p>
                 </div>

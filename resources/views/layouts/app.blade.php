@@ -8,6 +8,13 @@
     <meta name="author" content="Martin Maina">
     <meta name="theme-color" content="#16a34a">
 
+    {{-- Favicons --}}
+    <link rel="icon" type="image/x-icon"            href="{{ asset('favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon"                    href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="manifest"                            href="{{ asset('favicon/site.webmanifest') }}">
+
     {{-- Open Graph --}}
     <meta property="og:type" content="website">
     <meta property="og:title" content="Kenya Tax Estimator — Know Where Every Shilling Goes">

@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const breakdownPeriod = document.getElementById('breakdownPeriodLabel');
     const cardNetSub      = document.getElementById('cardNetSub');
     const cardGrossSub    = document.getElementById('cardGrossSub');
+    const clearSalaryBtn  = document.getElementById('clearSalaryBtn');
 
     // true = user is viewing annual figures
     let isAnnual = false;
@@ -42,6 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ---- clear button — resets input, period toggle, and results ----
+    if (clearSalaryBtn) {
+        clearSalaryBtn.addEventListener('click', function () {
+            if (salaryInput) salaryInput.value = '';
+            if (periodToggle && periodToggle.checked) {
+                periodToggle.checked = false;
+                periodToggle.dispatchEvent(new Event('change'));
+            }
+            handleInput();
+            if (clearSalaryBtn) clearSalaryBtn.hidden = true;
+            if (salaryInput) salaryInput.focus();
+        });
+    }
+
     // ---- period toggle ----
     if (periodToggle) {
         periodToggle.addEventListener('change', function () {
@@ -63,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleInput() {
         if (!salaryInput) return;
         const raw = salaryInput.value.trim();
+
+        if (clearSalaryBtn) clearSalaryBtn.hidden = raw === '';
 
         if (raw === '') {
             clearError();
