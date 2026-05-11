@@ -4,7 +4,7 @@
             <div class="footer__brand">
                 <a href="{{ url('/') }}" class="footer__logo">
                     <i class="fa-solid fa-calculator"></i>
-                    <span>KenyaTax</span>
+                    <span>Tax Calculator</span>
                 </a>
                 <p class="footer__tagline">Know exactly where every shilling of your salary goes.</p>
             </div>

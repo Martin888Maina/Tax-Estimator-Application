@@ -2,7 +2,7 @@
     <div class="navbar__container">
         <a href="{{ url('/') }}" class="navbar__brand">
             <i class="fa-solid fa-calculator"></i>
-            <span>KenyaTax</span>
+            <span>Tax Calculator</span>
         </a>
 
         {{-- hamburger for mobile --}}

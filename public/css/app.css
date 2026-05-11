@@ -170,6 +170,14 @@ input, select, textarea {
     color: var(--green-dark);
 }
 
+.navbar__links a.btn--primary {
+    color: #fff;
+}
+
+.navbar__links a.btn--primary:hover {
+    color: #fff;
+}
+
 /* underline for active link */
 .navbar__links a.navbar__link--active::after {
     content: '';

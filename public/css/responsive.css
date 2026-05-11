@@ -62,6 +62,12 @@
         width: 100%;
     }
 
+    .navbar__links a.btn--primary {
+        display: inline-flex;
+        width: auto;
+        margin: var(--space-md) var(--space-lg);
+    }
+
     /* stack footer columns on mobile */
     .footer__top {
         grid-template-columns: 1fr;
