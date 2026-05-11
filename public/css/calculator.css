@@ -215,7 +215,7 @@
 
 .summary-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--space-md);
     margin-bottom: var(--space-xl);
 }
@@ -230,6 +230,7 @@
     align-items: flex-start;
     gap: var(--space-md);
     transition: var(--transition);
+    overflow: hidden;
 }
 
 .results-card:hover {
@@ -268,7 +269,8 @@
     font-weight: 700;
     color: var(--text-primary);
     font-variant-numeric: tabular-nums;
-    white-space: nowrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .results-card__amount--large {
@@ -638,6 +640,16 @@
     }
 }
 
+@media (min-width: 600px) and (max-width: 1023px) {
+    .summary-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .results-card--highlight {
+        grid-column: 1 / -1;
+    }
+}
+
 @media (max-width: 767px) {
     .calc-page__title {
         font-size: 1.6rem;
@@ -653,12 +665,12 @@
         justify-content: center;
     }
 
-    .summary-cards {
-        grid-template-columns: 1fr 1fr;
+    .results-card__amount {
+        font-size: 1rem;
     }
 
-    .results-card--highlight {
-        grid-column: 1 / -1;
+    .results-card__amount--large {
+        font-size: 1.15rem;
     }
 
     .bracket-detail__header {
@@ -674,8 +686,3 @@
     }
 }
 
-@media (max-width: 480px) {
-    .summary-cards {
-        grid-template-columns: 1fr;
-    }
-}
